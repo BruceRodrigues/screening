@@ -2,11 +2,11 @@
 The goal of this exercise is scaffold out a basic react project using webpack.
 ___
 
-Here at Carta, we need to take into account several parameters during our builds and deployments and overtime we outgrew basic webpack configurations. As we grew, we had to account for the following:
+As UI engineers, we need to take into account several parameters during our builds and deployments. Over a piece of software's lifespan it's common to outgrow basic webpack configurations. It is important to account for the following:
 
 1. Deployments into prexisting software infrastructures
 2. Toggling features per client or environment
-3. The size of our codebase and the rate at which refactors take place,
+3. The size of the codebase and the rate at which refactors take place,
 4. Supporting new polyfills and deprecating old ones
 
 Due to these factors a successful front end engineer should have a solid grasp of node.js and webpack

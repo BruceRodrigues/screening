@@ -3,23 +3,17 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 const path = require("path");
+const public = path.resolve(__dirname, "public");
+const src = path.resolve(__dirname, "src");
+const dist = path.resolve(__dirname, "dist");
 
 module.exports = {
-  entry: [path.resolve(__dirname, "src") + "/index.js"],
+  entry: [src + "/index.js"],
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: dist,
     filename: "bundle.js",
     publicPath: "/",
   },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: path.resolve(__dirname, "dist"),
-    open: true,
-    compress: true,
-    hot: true,
-    port: 8080,
-  },
-  devtool: "inline-source-map",
   module: {
     rules: [
       {
@@ -44,7 +38,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, "public"),
+          from: public,
           to: "assets",
           noErrorOnMissing: true,
         },
@@ -52,17 +46,15 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: "Basic react scaffold",
-      template: path.resolve(__dirname, "public") + "/index.html",
+      template: public + "/index.html",
       filename: "index.html",
     }),
-    //dev
-    new webpack.HotModuleReplacementPlugin(),
   ],
   resolve: {
-    modules: [path.resolve(__dirname, "src"), "node_modules"],
+    modules: [src, "node_modules"],
     extensions: [".js", ".jsx", ".json"],
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      "@": src,
     },
   },
 };
